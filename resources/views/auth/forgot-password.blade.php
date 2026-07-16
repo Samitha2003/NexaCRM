@@ -1,4 +1,6 @@
 <x-guest-layout>
+    <x-slot name="title">Forgot Password - NexaCRM</x-slot>
+
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
     </div>
@@ -18,7 +20,7 @@
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button>
-                {{ __('Email Password Reset Link') }}
+                {{ __('Send Password Reset Link') }}
             </x-primary-button>
         </div>
     </form>
