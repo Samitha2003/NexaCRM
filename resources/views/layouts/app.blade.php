@@ -5,48 +5,72 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased text-gray-900">
-        <div class="flex h-screen bg-[#FAF8F3]">
+
+        <style>
+            body { font-family: 'Inter', sans-serif; }
             
+            @keyframes float {
+                0% { transform: translate(0, 0) scale(1); }
+                50% { transform: translate(5%, 10%) scale(1.1); }
+                100% { transform: translate(-5%, -5%) scale(0.9); }
+            }
+            .animate-float {
+                animation: float 20s infinite ease-in-out alternate;
+            }
+            .animate-float-delayed {
+                animation: float 20s infinite ease-in-out alternate;
+                animation-delay: -5s;
+            }
+        </style>
+    </head>
+    <body class="font-sans antialiased text-slate-200 bg-[#09090b] overflow-hidden">
+        <div class="flex h-screen bg-[#09090b] relative">
+            
+            <!-- Ambient Background Glow -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+                <div class="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] rounded-full blur-[100px] opacity-35 animate-float bg-[radial-gradient(circle,#6366f1_0%,transparent_70%)]"></div>
+                <div class="absolute -bottom-[10%] -right-[10%] w-[40vw] h-[40vw] rounded-full blur-[100px] opacity-35 animate-float-delayed bg-[radial-gradient(circle,#8b5cf6_0%,transparent_70%)]"></div>
+            </div>
+
             <!-- Sidebar -->
-            <aside class="w-64 bg-gray-900 text-white flex flex-col border-r border-gray-800">
+            <aside class="w-64 bg-[#09090b]/80 backdrop-blur-md flex flex-col border-r border-white/5 relative z-10">
                 <!-- Logo Area -->
-                <div class="h-16 flex items-center px-6 border-b border-gray-800">
-                    <h1 class="text-xl font-bold tracking-wider text-[#C9A66B]">CRM SYSTEM</h1>
+                <div class="h-16 flex items-center px-6 border-b border-white/5">
+                    <a href="/" class="text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent">NexaCRM</a>
                 </div>
 
                 <!-- Navigation Links -->
                 <nav class="flex-1 px-4 py-6 space-y-2">
-                    <a href="{{ route('dashboard') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('dashboard') ? 'bg-gray-800 text-[#C9A66B]' : 'hover:bg-gray-800 hover:text-[#C9A66B]' }}">
+                    <a href="{{ route('dashboard') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('dashboard') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">
                         Dashboard
                     </a>
                     
                     <!-- Placeholders for future routes -->
-                    <a href="#" class="block px-4 py-2 rounded transition-colors hover:bg-gray-800 hover:text-[#C9A66B]">Customers</a>
-                    <a href="#" class="block px-4 py-2 rounded transition-colors hover:bg-gray-800 hover:text-[#C9A66B]">Proposals</a>
-                    <a href="#" class="block px-4 py-2 rounded transition-colors hover:bg-gray-800 hover:text-[#C9A66B]">Invoices</a>
-                    <a href="#" class="block px-4 py-2 rounded transition-colors hover:bg-gray-800 hover:text-[#C9A66B]">Transactions</a>
+                    <a href="#" class="block px-4 py-2 rounded transition-colors text-slate-300 hover:bg-white/5 hover:text-indigo-400">Customers</a>
+                    <a href="#" class="block px-4 py-2 rounded transition-colors text-slate-300 hover:bg-white/5 hover:text-indigo-400">Proposals</a>
+                    <a href="#" class="block px-4 py-2 rounded transition-colors text-slate-300 hover:bg-white/5 hover:text-indigo-400">Invoices</a>
+                    <a href="#" class="block px-4 py-2 rounded transition-colors text-slate-300 hover:bg-white/5 hover:text-indigo-400">Transactions</a>
                 </nav>
             </aside>
 
             <!-- Main Content Wrapper -->
-            <div class="flex-1 flex flex-col overflow-hidden">
+            <div class="flex-1 flex flex-col overflow-hidden relative z-10">
                 
                 <!-- Topbar (Breeze's existing navigation for profile/logout) -->
                 @include('layouts.navigation')
 
                 <!-- Page Heading -->
                 @if (isset($header))
-                    <header class="bg-white shadow-sm">
+                    <header class="bg-[#09090b]/40 backdrop-blur-md border-b border-white/5">
                         <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                             {{ $header }}
                         </div>
