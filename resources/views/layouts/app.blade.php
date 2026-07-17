@@ -56,7 +56,9 @@
                     <a href="{{ route('customers.index') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('customers.*') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">
                         Customers
                     </a>
-                    <a href="#" class="block px-4 py-2 rounded transition-colors text-slate-300 hover:bg-white/5 hover:text-indigo-400">Proposals</a>
+                    <a href="{{ route('proposals.index') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('proposals.*') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">
+                        Proposal
+                    </a>
                     <a href="#" class="block px-4 py-2 rounded transition-colors text-slate-300 hover:bg-white/5 hover:text-indigo-400">Invoices</a>
                     <a href="#" class="block px-4 py-2 rounded transition-colors text-slate-300 hover:bg-white/5 hover:text-indigo-400">Transactions</a>
                 </nav>

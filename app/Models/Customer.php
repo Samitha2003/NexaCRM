@@ -15,4 +15,9 @@ class Customer extends Model
         "phone",
         "is_active"
     ];
+
+    public function proposals()
+    {
+        return $this->hasMany(Proposal::class);
+    }
 }
