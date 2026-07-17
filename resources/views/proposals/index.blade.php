@@ -29,7 +29,7 @@
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="py-3 px-4 font-medium text-gray-900">{{ $proposal->title }}</td>
                             <td class="py-3 px-4 text-gray-600">{{ $proposal->customer->name ?? 'N/A' }}</td>
-                            <td class="py-3 px-4 text-gray-900 font-semibold">${{ number_format($proposal->amount, 2) }}</td>
+                            <td class="py-3 px-4 text-gray-900 font-semibold">${{ number_format($proposal->amount, 0) }}</td>
                             <td class="py-3 px-4">
                                 <form action="{{ route('proposals.update-status', $proposal) }}" method="POST" class="flex items-center gap-2">
                                     @csrf

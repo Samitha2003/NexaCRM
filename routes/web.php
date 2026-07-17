@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\InvoiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,12 @@ Route::middleware('auth')->group(function () {
     // Proposal Routes
     Route::resource('proposals', ProposalController::class);
     Route::patch('/proposals/{proposal}/status', [ProposalController::class,'updateStatus'])->name('proposals.update-status');
-});
+
+    // Invoice Routes
+    Route::resource('invoices', InvoiceController::class);
+    Route::patch('/invoices/{invoice}/send', [InvoiceController::class,'send'])->name('invoices.send');
+    });
+
+Route::get('invoice/{invoice}/pay', [InvoiceController::class,'pay'])->name('invoices.pay');
 
 require __DIR__.'/auth.php';
