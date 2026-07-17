@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,8 +41,14 @@ Route::middleware('auth')->group(function () {
     // Invoice Routes
     Route::resource('invoices', InvoiceController::class);
     Route::patch('/invoices/{invoice}/send', [InvoiceController::class,'send'])->name('invoices.send');
+
+    Route::get('transaction', [TransactionController::class,'index'])->name('transactions.index');
     });
 
 Route::get('invoice/{invoice}/pay', [InvoiceController::class,'pay'])->name('invoices.pay');
+
+// Stripe Checkout Routes
+Route::get('checkout/success', [InvoiceController::class, 'success'])->name('checkout.success');
+Route::get('checkout/cancel', [InvoiceController::class, 'cancel'])->name('checkout.cancel');
 
 require __DIR__.'/auth.php';

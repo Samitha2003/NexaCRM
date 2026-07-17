@@ -40,6 +40,14 @@
                             </td>
                             <td class="py-3 px-4">
                                 <div class="flex items-center space-x-3">
+                                    <!-- Send Invoice -->
+                                    @if($invoice->status !== 'paid' && $invoice->status !== 'sent')
+                                    <form action="{{ route('invoices.send', $invoice) }}" method="POST" onsubmit="return confirm('Send this invoice to {{ $invoice->customer->email }}?');" class="inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="text-sm font-medium text-green-600 hover:text-green-900 transition">Send</button>
+                                    </form>
+                                    @endif
                                     <!-- Edit Link -->
                                     <a href="{{ route('invoices.edit', $invoice) }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-900 transition">Edit</a>
                                     <!-- Delete Form -->

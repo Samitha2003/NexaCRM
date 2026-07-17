@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();            
             $table->string('invoice_number');
-            $table->decimal('amount',10);
+            $table->decimal('amount',10,2);
             $table->enum('status', ['paid','partial','unpaid'])->default('unpaid');
             $table->text('notes')->nullable();
             $table->timestamps();

@@ -15,6 +15,7 @@ class InvoiceMail extends Mailable
     use Queueable, SerializesModels;
 
     public $invoice;
+    public $paymentUrl;
 
     /**
      * Create a new message instance.
@@ -22,6 +23,7 @@ class InvoiceMail extends Mailable
     public function __construct($invoice)
     {
         $this->invoice = $invoice;
+        $this->paymentUrl = route('invoices.pay', $invoice);
     }
 
     /**

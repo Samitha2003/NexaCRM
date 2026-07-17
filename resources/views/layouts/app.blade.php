@@ -62,7 +62,7 @@
                     <a href="{{ route('invoices.index') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('invoices.* ') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">
                         Invoices
                     </a>
-                    <a href="#" class="block px-4 py-2 rounded transition-colors text-slate-300 hover:bg-white/5 hover:text-indigo-400">Transactions</a>
+                    <a href="{{ route('transactions.index') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('transactions.* ') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">Transactions</a>
                 </nav>
             </aside>
 
