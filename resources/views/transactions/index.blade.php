@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Transactions</h2>
+            <h2 class="font-semibold text-xl text-slate-100 leading-tight">Transactions</h2>
         </div>
     </x-slot>
 
@@ -32,7 +32,7 @@
                         <td class="py-2 text-sm text-gray-500 truncate max-w-xs" title="{{ $transaction->stripe_session_id }}">{{ $transaction->stripe_session_id ?? 'N/A' }}</td>
                         <td class="py-2 text-sm text-gray-600">${{ number_format($transaction->amount, 2) }}</td>
                         <td class="py-2 text-sm">
-                            <span class="px-2 py-1 text-xs font-semibold rounded-full {{ $transaction->status === 'successful' || $transaction->status === 'paid' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full {{ $transaction->status === 'successful' || $transaction->status === 'paid' ? 'bg-green-100 text-green-800' : 'bg-green-100 text-green-800' }}">
                                 {{ ucfirst($transaction->status) }}
                             </span>
                         </td>

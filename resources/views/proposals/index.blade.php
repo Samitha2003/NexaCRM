@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Proposals</h2>
-            <a href="{{ route('proposals.create') }}" class="bg-gray-900 text-[#C9A66B] px-4 py-2 rounded transition hover:bg-gray-800">Create Proposal</a>
+            <h2 class="font-semibold text-xl text-gray-100 leading-tight">Proposals</h2>
+            <a href="{{ route('proposals.create') }}" class="inline-flex items-center rounded-md border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-indigo-300 shadow-sm backdrop-blur transition hover:bg-white/15 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400/60 focus:ring-offset-2 focus:ring-offset-[#09090b]">Create Proposal</a>
         </div>
     </x-slot>
 
@@ -16,21 +16,21 @@
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="border-b border-gray-200 bg-gray-50 text-gray-700 uppercase text-xs font-semibold">
-                            <th class="py-3 px-4">Title</th>
-                            <th class="py-3 px-4">Customer</th>
-                            <th class="py-3 px-4">Amount</th>
-                            <th class="py-3 px-4">Status</th>
-                            <th class="py-3 px-4">Actions</th>
+                        <tr class="border-b">
+                            <th class="py-2 px-3 text-sm text-gray-500 font-semibold uppercase">Title</th>
+                            <th class="py-2 px-3 text-sm text-gray-500 font-semibold uppercase">Customer</th>
+                            <th class="py-2 px-3 text-sm text-gray-500 font-semibold uppercase">Amount</th>
+                            <th class="py-2 px-3 text-sm text-gray-500 font-semibold uppercase">Status</th>
+                            <th class="py-2 px-3 text-sm text-gray-500 font-semibold uppercase">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200">
+                    <tbody>
                         @forelse($proposals as $proposal)
-                        <tr class="hover:bg-gray-50 transition-colors">
-                            <td class="py-3 px-4 font-medium text-gray-900">{{ $proposal->title }}</td>
-                            <td class="py-3 px-4 text-gray-600">{{ $proposal->customer->name ?? 'N/A' }}</td>
-                            <td class="py-3 px-4 text-gray-900 font-semibold">${{ number_format($proposal->amount, 0) }}</td>
-                            <td class="py-3 px-4">
+                        <tr class="border-b">
+                            <td class="py-3 px-4 text-sm text-gray-900">{{ $proposal->title }}</td>
+                            <td class="py-3 px-4 text-sm text-gray-600">{{ $proposal->customer->name ?? 'N/A' }}</td>
+                            <td class="py-3 px-4 text-sm text-gray-900">${{ number_format($proposal->amount, 0) }}</td>
+                            <td class="py-3 px-4 text-sm">
                                 <form action="{{ route('proposals.update-status', $proposal) }}" method="POST" class="flex items-center gap-2">
                                     @csrf
                                     @method('PATCH')

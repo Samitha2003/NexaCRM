@@ -55,6 +55,22 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-slate-300 hover:text-white hover:bg-white/5">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('customers.index')" :active="request()->routeIs('customers.*')" class="text-slate-300 hover:text-white hover:bg-white/5">
+                {{ __('Customers') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('proposals.index')" :active="request()->routeIs('proposals.*')" class="text-slate-300 hover:text-white hover:bg-white/5">
+                {{ __('Proposal') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('invoices.index')" :active="request()->routeIs('invoices.*')" class="text-slate-300 hover:text-white hover:bg-white/5">
+                {{ __('Invoices') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('transactions.index')" :active="request()->routeIs('transactions.*')" class="text-slate-300 hover:text-white hover:bg-white/5">
+                {{ __('Transactions') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

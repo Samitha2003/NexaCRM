@@ -42,7 +42,7 @@
             </div>
 
             <!-- Sidebar -->
-            <aside class="w-64 bg-[#09090b]/80 backdrop-blur-md flex flex-col border-r border-white/5 relative z-10">
+            <aside class="hidden lg:flex w-64 bg-[#09090b]/80 backdrop-blur-md flex-col border-r border-white/5 relative z-10">
                 <!-- Logo Area -->
                 <div class="h-16 flex items-center px-6 border-b border-white/5">
                     <a href="/" class="text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent">NexaCRM</a>
@@ -59,10 +59,10 @@
                     <a href="{{ route('proposals.index') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('proposals.*') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">
                         Proposal
                     </a>
-                    <a href="{{ route('invoices.index') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('invoices.* ') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">
+                    <a href="{{ route('invoices.index') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('invoices.*') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">
                         Invoices
                     </a>
-                    <a href="{{ route('transactions.index') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('transactions.* ') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">Transactions</a>
+                    <a href="{{ route('transactions.index') }}" class="block px-4 py-2 rounded transition-colors {{ request()->routeIs('transactions.*') ? 'bg-white/10 text-indigo-400' : 'text-slate-300 hover:bg-white/5 hover:text-indigo-400' }}">Transactions</a>
                 </nav>
             </aside>
 

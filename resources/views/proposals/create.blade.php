@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Create Proposal</h2>
+        <h2 class="font-semibold text-xl text-gray-100 leading-tight">Create Proposal</h2>
     </x-slot>
 
     <div class="py-12">
@@ -22,8 +22,8 @@
                     
                     <div class="mb-4">
                         <label for="customer_id" class="block font-medium text-gray-700">Customer</label>
-                        <select name="customer_id" id="customer_id" class="w-full border-gray-300 rounded-md shadow-sm" required>
-                            <option value="">-- Select Customer --</option>
+                        <select name="customer_id" id="customer_id" class="w-full border-gray-300 rounded-md shadow-sm text-gray-400" required>
+                            <option value="">Select Customer</option>
                             @foreach($customers as $customer)
                                 <option value="{{ $customer->id }}" {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
                                     {{ $customer->name }}
@@ -34,17 +34,17 @@
 
                     <div class="mb-4">
                         <label for="title" class="block font-medium text-gray-700">Proposal Title</label>
-                        <input type="text" name="title" id="title" class="w-full border-gray-300 rounded-md shadow-sm" value="{{ old('title') }}" required>
+                        <input type="text" name="title" id="title" class="w-full border-gray-300 rounded-md shadow-sm text-gray-400" value="{{ old('title') }}" required>
                     </div>
 
                     <div class="mb-4">
                         <label for="amount" class="block font-medium text-gray-700">Amount ($)</label>
-                        <input type="number" name="amount" id="amount" step="1" min="0" class="w-full border-gray-300 rounded-md shadow-sm" value="{{ old('amount') }}" required>
+                        <input type="number" name="amount" id="amount" step="1" min="0" class="w-full border-gray-300 rounded-md shadow-sm text-gray-400" value="{{ old('amount') }}" required>
                     </div>
 
                     <div class="mb-4">
                         <label for="status" class="block font-medium text-gray-700">Status</label>
-                        <select name="status" id="status" class="w-full border-gray-300 rounded-md shadow-sm" required>
+                        <select name="status" id="status" class="w-full border-gray-300 rounded-md shadow-sm text-gray-400" required>
                             <option value="draft" {{ old('status') === 'draft' ? 'selected' : '' }}>Draft</option>
                             <option value="sent" {{ old('status') === 'sent' ? 'selected' : '' }}>Sent</option>
                             <option value="accepted" {{ old('status') === 'accepted' ? 'selected' : '' }}>Accepted</option>
@@ -54,11 +54,11 @@
 
                     <div class="mb-4">
                         <label for="notes" class="block font-medium text-gray-700">Notes / Details</label>
-                        <textarea name="notes" id="notes" rows="4" class="w-full border-gray-300 rounded-md shadow-sm">{{ old('notes') }}</textarea>
+                        <textarea name="notes" id="notes" rows="4" class="w-full border-gray-300 rounded-md shadow-sm text-gray-400">{{ old('notes') }}</textarea>
                     </div>
 
                     <div class="flex items-center gap-4">
-                        <button type="submit" class="bg-gray-900 text-[#C9A66B] px-4 py-2 rounded transition hover:bg-gray-800">
+                        <button type="submit" class="bg-gray-900 text-[#ffffff] px-4 py-2 rounded transition hover:bg-gray-800">
                             Save Proposal
                         </button>
                         <a href="{{ route('proposals.index') }}" class="text-sm text-gray-600 hover:underline">Cancel</a>
