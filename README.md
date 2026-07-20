@@ -1,67 +1,120 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# NexaCRM
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+NexaCRM is a modern, high-performance Customer Relationship Management (CRM) application built on the Laravel framework. It provides a premium, responsive dark-themed workspace designed to streamline customer communications, manage proposals, track invoicing status, and process secure billing transactions via Stripe checkout.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Key Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Dynamic Workspace Dashboard**: real-time metrics showing total revenue, customer acquisition counts, pending proposal deals, open invoice amounts, and a live feed of recent transactions.
+- **Client & Lead Management**: easily build, list, edit, and toggle the activation status of customers.
+- **Proposal Workspace**: draft, send, edit, and review proposals to turn estimates into concrete contracts.
+- **Automated Billing & Invoices**: issue invoices and trigger HTML transactional emails directly to the client's inbox.
+- **Stripe Checkout Integration**: clients can securely pay outstanding invoices online via Stripe, automatically registering succeeded transactions back to the CRM database.
+- **Ambient Dark Theme UI**: a stunning aesthetic layout leveraging soft radial background animations, modern typography (Inter), glassmorphism, responsive sidebar navigation, and subtle micro-interactions.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Backend**: Laravel 10.x & PHP 8.1+
+- **Frontend Utilities**: Blade, Tailwind CSS, Vite
+- **Database**: MySQL / SQLite
+- **Security & Auth**: Laravel Breeze
+- **Integrations**: Stripe Checkout API
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation & Setup
 
-## Laravel Sponsors
+Follow these steps to run NexaCRM locally:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 1. Prerequisites
+Ensure you have the following installed on your machine:
+- PHP >= 8.1
+- Composer
+- Node.js & NPM
+- MySQL database server (or SQLite)
 
-### Premium Partners
+### 2. Clone the Repository
+```bash
+git clone <repository-url> NexaCRM
+cd NexaCRM
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 3. Install Dependencies
+```bash
+# Install PHP vendor packages
+composer install
 
-## Contributing
+# Install node dependencies
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Environment Configuration
+Copy the `.env.example` file to create your own configuration file:
+```bash
+cp .env.example .env
+```
+Open `.env` and configure your database, mailer, and Stripe keys:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=Nexa_CRM
+DB_USERNAME=root
+DB_PASSWORD=
 
-## Code of Conduct
+# Mail Configurations (e.g. Mailtrap)
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_mailtrap_username
+MAIL_PASSWORD=your_mailtrap_password
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Stripe API Credentials
+STRIPE_KEY=your_pk_test_stripe_key
+STRIPE_SECRET=your_sk_test_stripe_secret
+```
 
-## Security Vulnerabilities
+### 5. Generate Application Key
+```bash
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 6. Run Migrations
+Run the database migrations to set up the schema:
+```bash
+php artisan migrate
+```
+
+### 7. Compile Assets & Run Local Server
+Open two terminal windows/tabs to run the vite asset pipeline and the Laravel development server concurrently:
+
+**Terminal 1 (Vite Dev Server)**:
+```bash
+npm run dev
+```
+
+**Terminal 2 (Artisan Local Server)**:
+```bash
+php artisan serve
+```
+The application will be accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+---
+
+## Architecture and Database Relationships
+
+The database is built on four core models to handle CRM workflows cleanly:
+
+- **Customer**: Holds contact information (Name, Email, Phone) and active status.
+- **Proposal**: Associated with a specific customer (`customer_id`). Tracks estimations and deal statuses (`draft`, `sent`, `accepted`, `rejected`).
+- **Invoice**: Connected to a customer (`customer_id`). Tracks billing status (`paid`, `partial`, `unpaid`, `sent`).
+- **Transaction**: Ties payments back to a customer (`customer_id`) and invoice (`invoice_id`). Tracks Stripe session states for verification.
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# NexaCRM
+This project is licensed under the MIT License. Refer to the `LICENSE` file for details.
